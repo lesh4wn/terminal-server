@@ -1,0 +1,32 @@
+{
+  "name": "terminal-server",
+  "version": "0.0.1",
+  "description": "The backend for terminal-client",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js",
+    "db:create": "sequelize-cli db:create",
+    "db:migrate": "sequelize-cli db:migrate",
+    "db:g:migration": "sequelize-cli migration:generate --name",
+    "db:seeds": "sequelize-cli db:seed:all",
+    "db:g:seed": "sequelize-cli seed:generate --name"
+  },
+  "author": "Leshawn Phillips",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "helmet": "^6.0.1",
+    "nodemon": "^2.0.20",
+    "path": "^0.12.7",
+    "pg": "^8.9.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.28.0"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.0"
+  }
+}
