@@ -17,8 +17,8 @@ app.use(bodyParser.json());
 
 // Routes
 require("./routes/user.route")(app);
-// app.use("/location", require("./routes/location.route.js"));
-// app.use("/product", require("./routes/product.route.js"));
+require("./routes/location.route")(app);
+require("./routes/product.route")(app);
 // app.use("/ticket", require("./routes/ticket.route.js"));
 
 // Starts the server

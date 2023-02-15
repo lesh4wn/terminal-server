@@ -47,7 +47,7 @@ exports.create = (req, res) => {
     country,
   };
 
-  return Location.create(user)
+  return Location.create(location)
     .then((data) => {
       res.send(data);
     })
