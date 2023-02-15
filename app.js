@@ -20,7 +20,7 @@ require("./routes/user.route")(app);
 require("./routes/location.route")(app);
 require("./routes/product.route")(app);
 require("./routes/customer.route")(app);
-// app.use("/ticket", require("./routes/ticket.route.js"));
+require("./routes/ticket.route")(app);
 
 // Starts the server
 app.listen(process.env.API_PORT, () =>
