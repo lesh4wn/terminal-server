@@ -14,13 +14,13 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const { id } = req.params;
 
-  return User.findByPk(id)
+  return Location.findByPk(id)
     .then((data) => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find user with id=${id}.`,
+          message: `Cannot find Location with id=${id}.`,
         });
       }
     })
@@ -28,39 +28,33 @@ exports.findOne = (req, res) => {
       res.status(500).send({
         message:
           err.message ||
-          `An error has occurred while retrieving user with id=${id}.`,
+          `An error has occurred while retrieving Location with id=${id}.`,
       });
     });
 };
 
 exports.create = (req, res) => {
-  const {
-    firstName,
-    lastName,
-    emailAddress,
-    password,
-    loginDisabled,
-    securityRole,
-    lastLogin,
-  } = req.body;
+  const { name, displayName, streetAddress, city, zipCode, state, country } =
+    req.body;
 
-  const user = {
-    firstName,
-    lastName,
-    emailAddress,
-    password,
-    loginDisabled,
-    securityRole,
-    lastLogin,
+  const location = {
+    name,
+    displayName,
+    streetAddress,
+    city,
+    zipCode,
+    state,
+    country,
   };
 
-  return User.create(user)
+  return Location.create(user)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || `An error has occurred while creating user.`,
+        message:
+          err.message || `An error has occurred while creating Location.`,
       });
     });
 };
@@ -68,23 +62,24 @@ exports.create = (req, res) => {
 exports.update = (req, res) => {
   const { id } = req.params;
 
-  User.update(req.body, {
+  Location.update(req.body, {
     where: { id: id },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: `User ${id} was updated successfully.`,
+          message: `Location ${id} was updated successfully.`,
         });
       } else {
         res.send({
-          message: `User ${id} could not be updated.`,
+          message: `Location ${id} could not be updated.`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || `An error has occurred while updating user.`,
+        message:
+          err.message || `An error has occurred while updating Location.`,
       });
     });
 };
@@ -92,39 +87,40 @@ exports.update = (req, res) => {
 exports.deleteOne = (req, res) => {
   const { id } = req.params;
 
-  User.destroy({
+  Location.destroy({
     where: { id: id },
   })
     .then((num) => {
       if (num == 1) {
         res.send({
-          message: `User ${id} was deleted successfully.`,
+          message: `Location ${id} was deleted successfully.`,
         });
       } else {
         res.send({
-          message: `User ${id} could not be deleted.`,
+          message: `Location ${id} could not be deleted.`,
         });
       }
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || `An error has occurred while deleting user.`,
+        message:
+          err.message || `An error has occurred while deleting Location.`,
       });
     });
 };
 
 exports.deleteAll = (req, res) => {
-  User.destroy({
+  Location.destroy({
     where: {},
     truncate: false,
   })
     .then((num) => {
-      res.send({ message: `${num} users were deleted successfully.` });
+      res.send({ message: `${num} Locations were deleted successfully.` });
     })
     .catch((err) => {
       res.status(500).send({
         message:
-          err.message || `An error has occurred while deleting all users.`,
+          err.message || `An error has occurred while deleting all Locations.`,
       });
     });
 };

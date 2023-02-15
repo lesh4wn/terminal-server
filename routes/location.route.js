@@ -1,21 +1,21 @@
 const express = require("express");
 
 module.exports = (app) => {
-  const users = require("../controllers/location.controller");
+  const locations = require("../controllers/location.controller");
 
   var router = require("express").Router();
 
-  router.get("/", users.findAll);
+  router.get("/", locations.findAll);
 
-  router.get("/:id", users.findOne);
+  router.get("/:id", locations.findOne);
 
-  router.post("/", users.create);
+  router.post("/", locations.create);
 
-  router.put("/:id", users.update);
+  router.put("/:id", locations.update);
 
-  router.delete("/:id", users.deleteOne);
+  router.delete("/:id", locations.deleteOne);
 
-  router.delete("/", users.deleteAll);
+  router.delete("/", locations.deleteAll);
 
-  app.use("/user", router);
+  app.use("/location", router);
 };
