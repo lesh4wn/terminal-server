@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 require("./routes/user.route")(app);
 require("./routes/location.route")(app);
 require("./routes/product.route")(app);
+require("./routes/customer.route")(app);
 // app.use("/ticket", require("./routes/ticket.route.js"));
 
 // Starts the server
